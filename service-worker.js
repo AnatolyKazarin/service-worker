@@ -1,4 +1,4 @@
-const CACHE_NAME = "app-cache-v1";
+const CACHE_NAME = "app-cache-v2";
 const urlsToCache = ["/", "/index.html", "/static/js/main.js"]; // Cache essential assets
 
 self.addEventListener("install", (event) => {
