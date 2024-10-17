@@ -21,7 +21,7 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-    const cacheWhitelist = ['my-app-cache-v4']; // Новый кэш
+    const cacheWhitelist = ['my-app-cache-v5']; // Новый кэш
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
