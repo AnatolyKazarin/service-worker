@@ -11,10 +11,27 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('message', (event) => {
     if (event.data === 'CHECK_VERSION') {
+        console.log('Проверка версии...');
         self.clients.matchAll().then((clients) => {
             clients.forEach((client) =>
                 client.postMessage({ type: 'NEW_VERSION_AVAILABLE' })
             );
         });
     }
+});
+
+self.addEventListener('activate', (event) => {
+    const cacheWhitelist = ['my-app-cache-v2']; // Новый кэш
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (!cacheWhitelist.includes(cacheName)) {
+                        console.log('Удаление старого кэша:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
 });

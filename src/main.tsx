@@ -4,35 +4,39 @@ import App from './App.tsx'
 import './index.css'
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-            console.log('Service Worker зарегистрирован:', registration);
+    navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+        console.log('Service Worker зарегистрирован.');
 
-            // Отслеживаем обновления
-            registration.onupdatefound = () => {
-                const installingWorker = registration.installing;
-                if(installingWorker) {
-                    installingWorker.onstatechange = () => {
-                        if (installingWorker.state === 'installed') {
-                            if (navigator.serviceWorker.controller) {
-                                console.log('Новое обновление доступно.');
-                                // Отправляем уведомление пользователю
-                                notifyUserAboutUpdate();
-                            }
+        // Проверяем обновление на сервере
+        registration.update(); // Принудительная проверка обновлений
+
+        if (registration.waiting) {
+            notifyUserAboutUpdate(); // Уведомление, если новый SW ждет активации
+        }
+
+        registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+            if(installingWorker) {
+                installingWorker.onstatechange = () => {
+                    if (installingWorker.state === 'installed') {
+                        if (navigator.serviceWorker.controller) {
+                            notifyUserAboutUpdate(); // Сообщение об обновлении
                         }
-                    };
-                }
-            };
+                    }
+                };
+            }
+        };
+    });
 
-            registration.update()
-        }).catch((error) => {
-            console.error('Ошибка регистрации Service Worker:', error);
-        });
+    navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data.type === 'NEW_VERSION_AVAILABLE') {
+            notifyUserAboutUpdate();
+        }
     });
 }
 
 function notifyUserAboutUpdate() {
-    if (window.confirm('Новое обновление доступно. Перезагрузить страницу?')) {
+    if (window.confirm('Доступно новое обновление. Перезагрузить страницу?')) {
         window.location.reload();
     }
 }
