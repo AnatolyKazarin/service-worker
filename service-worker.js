@@ -10,6 +10,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('message', (event) => {
+    console.log('message', event)
     if (event.data === 'CHECK_VERSION') {
         console.log('Проверка версии...');
         self.clients.matchAll().then((clients) => {
