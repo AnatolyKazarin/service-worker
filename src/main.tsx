@@ -7,11 +7,14 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js').then((registration) => {
         console.log('Service Worker зарегистрирован.');
 
-        // Проверяем обновление на сервере
-        registration.update(); // Принудительная проверка обновлений
-
         if (registration.waiting) {
             notifyUserAboutUpdate(); // Уведомление, если новый SW ждет активации
+        }
+
+        if (registration) {
+            registration.addEventListener("updatefound", () => {
+                console.log("Service Worker update found!");
+            });
         }
 
         registration.onupdatefound = () => {
