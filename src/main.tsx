@@ -23,6 +23,8 @@ if ('serviceWorker' in navigator) {
                     };
                 }
             };
+
+            registration.update()
         }).catch((error) => {
             console.error('Ошибка регистрации Service Worker:', error);
         });
