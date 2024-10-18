@@ -2,11 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import {createPortal} from "react-dom";
 import ModalContent from "./Modal";
 
 function App() {
-
+    const [showModal, setShowModal] = useState(false)
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js').then((registration) => {
             console.log('Service Worker зарегистрирован.');
@@ -18,7 +17,8 @@ function App() {
             if (registration) {
                 registration.addEventListener("updatefound", () => {
                     console.log("Service Worker update found!");
-                    notifyUserAboutUpdate();
+                    // notifyUserAboutUpdate();
+                    setShowModal(true)
                 });
             }
 
@@ -36,25 +36,26 @@ function App() {
             // };
         });
 
-        navigator.serviceWorker.addEventListener('message', (event) => {
-            if (event.data.type === 'NEW_VERSION_AVAILABLE') {
-                notifyUserAboutUpdate();
-            }
-        });
+        // navigator.serviceWorker.addEventListener('message', (event) => {
+        //     if (event.data.type === 'NEW_VERSION_AVAILABLE') {
+        //         notifyUserAboutUpdate();
+        //     }
+        // });
     }
 
-    function notifyUserAboutUpdate() {
-        console.log('notifyUserAboutUpdate');
-        createPortal(
-            <ModalContent />,
-            document.body
-        )
-    }
+    // function notifyUserAboutUpdate() {
+    //     console.log('notifyUserAboutUpdate');
+    //     createPortal(
+    //         <ModalContent />,
+    //         document.body
+    //     )
+    // }
 
   const [count, setCount] = useState(0)
 
   return (
     <>
+        {showModal && <ModalContent />}
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
