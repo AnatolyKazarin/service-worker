@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ModalContent from "./Modal";
+import {createPortal} from "react-dom";
 
 function App() {
     const [showModal, setShowModal] = useState(false)
@@ -55,7 +56,10 @@ function App() {
     console.log('Show modal', showModal)
   return (
     <>
-        {showModal && <ModalContent />}
+        {showModal && createPortal(
+            <ModalContent />,
+            document.body
+        )}
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
