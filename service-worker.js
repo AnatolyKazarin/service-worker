@@ -22,7 +22,7 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-    const cacheWhitelist = ['my-app-cache-v6']; // Новый кэш
+    const cacheWhitelist = ['my-app-cache-v7']; // Новый кэш
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
