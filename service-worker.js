@@ -6,7 +6,6 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
     console.log('Service Worker активирован');
-    const date = Date.now()
     event.waitUntil(self.clients.claim()); // Захватить клиентов
 });
 
@@ -22,18 +21,18 @@ self.addEventListener('activate', (event) => {
 //     }
 // });
 
-// self.addEventListener('activate', (event) => {
-//     const cacheWhitelist = ['my-app-cache-v4']; // Новый кэш
-//     event.waitUntil(
-//         caches.keys().then((cacheNames) => {
-//             return Promise.all(
-//                 cacheNames.map((cacheName) => {
-//                     if (!cacheWhitelist.includes(cacheName)) {
-//                         console.log('Удаление старого кэша:', cacheName);
-//                         return caches.delete(cacheName);
-//                     }
-//                 })
-//             );
-//         })
-//     );
-// });
+self.addEventListener('activate', (event) => {
+    const cacheWhitelist = [`my-app-cache-v4_${Date.now()}`]; // Новый кэш
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (!cacheWhitelist.includes(cacheName)) {
+                        console.log('Удаление старого кэша:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});
