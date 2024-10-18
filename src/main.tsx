@@ -14,6 +14,7 @@ if ('serviceWorker' in navigator) {
         if (registration) {
             registration.addEventListener("updatefound", () => {
                 console.log("Service Worker update found!");
+                notifyUserAboutUpdate();
             });
         }
 
