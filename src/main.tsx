@@ -42,6 +42,7 @@ if ('serviceWorker' in navigator) {
 }
 
 function notifyUserAboutUpdate() {
+    console.log('notifyUserAboutUpdate');
     createPortal(
         <ModalContent />,
         document.body
