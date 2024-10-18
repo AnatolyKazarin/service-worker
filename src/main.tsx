@@ -42,12 +42,10 @@ if ('serviceWorker' in navigator) {
 }
 
 function notifyUserAboutUpdate() {
-    if (window.confirm('Доступно новое обновление. Перезагрузить страницу?')) {
-        {createPortal(
-            <ModalContent />,
-            document.body
-        )}
-    }
+    createPortal(
+        <ModalContent />,
+        document.body
+    )
 }
 
 createRoot(document.getElementById('root')!).render(
