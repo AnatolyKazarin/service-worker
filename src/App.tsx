@@ -52,7 +52,7 @@ function App() {
     // }
 
   const [count, setCount] = useState(0)
-
+    console.log('Show modal', showModal)
   return (
     <>
         {showModal && <ModalContent />}
