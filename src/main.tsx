@@ -2,6 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import {createPortal} from "react-dom";
+import ModalContent from "./Modal";
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js').then((registration) => {
@@ -41,7 +43,10 @@ if ('serviceWorker' in navigator) {
 
 function notifyUserAboutUpdate() {
     if (window.confirm('Доступно новое обновление. Перезагрузить страницу?')) {
-        window.location.reload();
+        {createPortal(
+            <ModalContent />,
+            document.body
+        )}
     }
 }
 
