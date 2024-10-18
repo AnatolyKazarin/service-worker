@@ -10,17 +10,17 @@ self.addEventListener('activate', (event) => {
     event.waitUntil(self.clients.claim()); // Захватить клиентов
 });
 
-self.addEventListener('message', (event) => {
-    console.log('message', event)
-    if (event.data === 'CHECK_VERSION') {
-        console.log('Проверка версии...');
-        self.clients.matchAll().then((clients) => {
-            clients.forEach((client) =>
-                client.postMessage({ type: 'NEW_VERSION_AVAILABLE' })
-            );
-        });
-    }
-});
+// self.addEventListener('message', (event) => {
+//     console.log('message', event)
+//     if (event.data === 'CHECK_VERSION') {
+//         console.log('Проверка версии...');
+//         self.clients.matchAll().then((clients) => {
+//             clients.forEach((client) =>
+//                 client.postMessage({ type: 'NEW_VERSION_AVAILABLE' })
+//             );
+//         });
+//     }
+// });
 
 // self.addEventListener('activate', (event) => {
 //     const cacheWhitelist = ['my-app-cache-v4']; // Новый кэш
