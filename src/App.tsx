@@ -8,7 +8,9 @@ import {createPortal} from "react-dom";
 function App() {
     const [showModal, setShowModal] = useState(false)
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+        navigator.serviceWorker.register(
+            import.meta.env.MODE === 'production' ? '/service-worker.js' : '/dev-sw.js?dev-sw'
+        ).then((registration) => {
             console.log('Service Worker зарегистрирован.');
 
             // if (registration.waiting) {
