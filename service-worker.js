@@ -4,21 +4,9 @@ self.addEventListener('install', (event) => {
     event.waitUntil(self.skipWaiting()); // Пропустить ожидание
 });
 
-self.addEventListener('activate', (event) => {
-    console.log('Service Worker активирован');
-    event.waitUntil(self.clients.claim()); // Захватить клиентов
-});
-
-// self.addEventListener('message', (event) => {
-//     console.log('message', event)
-//     if (event.data === 'CHECK_VERSION') {
-//         console.log('Проверка версии...');
-//         self.clients.matchAll().then((clients) => {
-//             clients.forEach((client) =>
-//                 client.postMessage({ type: 'NEW_VERSION_AVAILABLE' })
-//             );
-//         });
-//     }
+// self.addEventListener('activate', (event) => {
+//     console.log('Service Worker активирован');
+//  // Захватить клиентов
 // });
 
 self.addEventListener('activate', (event) => {
@@ -35,5 +23,5 @@ self.addEventListener('activate', (event) => {
             );
         })
     );
-    self.clients.claim();
+    event.waitUntil(self.clients.claim());
 });
