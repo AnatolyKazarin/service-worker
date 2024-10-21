@@ -20,7 +20,7 @@ export default defineConfig({
           // filename: "service-worker.js",
           // strategies: "injectManifest",
           // injectRegister: false,
-          registerType: 'autoUpdate',
+          registerType: 'prompt',
           workbox: {
               globPatterns: ['**/*.{js,css,html,ico,png,svg}']
           },
