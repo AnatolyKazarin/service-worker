@@ -12,7 +12,7 @@ export default defineConfig({
           // strategies: "injectManifest",
           // injectRegister: false,
           manifest: {icons: [{
-              src: './public/free.png',
+              src: './src/assets/free.png',
                   sizes: '512x512',
                   type: 'image/png',
                   purpose: 'any maskable'
