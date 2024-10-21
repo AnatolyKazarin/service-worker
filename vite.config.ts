@@ -7,14 +7,22 @@ export default defineConfig({
   plugins: [
       react(),
       VitePWA(  {
-          srcDir: "src",
-          filename: "service-worker.js",
-          strategies: "injectManifest",
-          injectRegister: false,
-          manifest: false,
-          injectManifest: {
-              injectionPoint: undefined,
-          }
+          // srcDir: "src",
+          // filename: "service-worker.js",
+          // strategies: "injectManifest",
+          // injectRegister: false,
+          manifest: {icons: [{
+              src: './public/free.png',
+                  sizes: '512x512',
+                  type: 'image/png',
+                  purpose: 'any maskable'
+              }]},
+          // devOptions: {
+          //     enabled: true
+          // }
+          // injectManifest: {
+          //     injectionPoint: undefined,
+          // }
       })
   ],
 })
