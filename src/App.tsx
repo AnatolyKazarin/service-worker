@@ -2,11 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ModalContent from "./Modal";
-import {createPortal} from "react-dom";
+// import ModalContent from "./Modal";
+// import {createPortal} from "react-dom";
 
 function App() {
-    const [showModal, setShowModal] = useState(false)
+    // const [showModal, setShowModal] = useState(false)
     // if ('serviceWorker' in navigator) {
     //     navigator.serviceWorker.register(
     //         import.meta.env.MODE === 'production' ? '/service-worker.js' : '/dev-sw.js?dev-sw'
@@ -55,13 +55,13 @@ function App() {
     // }
 
   const [count, setCount] = useState(0)
-    console.log('Show modal', showModal)
+    // console.log('Show modal', showModal)
   return (
     <>
-        {showModal && createPortal(
-            <ModalContent />,
-            document.body
-        )}
+        {/*{showModal && createPortal(*/}
+        {/*    <ModalContent />,*/}
+        {/*    document.body*/}
+        {/*)}*/}
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
