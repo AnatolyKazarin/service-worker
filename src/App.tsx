@@ -7,44 +7,44 @@ import {createPortal} from "react-dom";
 
 function App() {
     const [showModal, setShowModal] = useState(false)
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(
-            import.meta.env.MODE === 'production' ? '/service-worker.js' : '/dev-sw.js?dev-sw'
-        ).then((registration) => {
-            console.log('Service Worker зарегистрирован.');
-
-            // if (registration.waiting) {
-            //     notifyUserAboutUpdate(); // Уведомление, если новый SW ждет активации
-            // }
-
-            if (registration) {
-                registration.addEventListener("updatefound", () => {
-                    console.log("Service Worker update found!");
-                    // notifyUserAboutUpdate();
-                    setShowModal(true)
-                });
-            }
-
-            // registration.onupdatefound = () => {
-            //     const installingWorker = registration.installing;
-            //     if(installingWorker) {
-            //         installingWorker.onstatechange = () => {
-            //             if (installingWorker.state === 'installed') {
-            //                 if (navigator.serviceWorker.controller) {
-            //                     notifyUserAboutUpdate(); // Сообщение об обновлении
-            //                 }
-            //             }
-            //         };
-            //     }
-            // };
-        });
-
-        // navigator.serviceWorker.addEventListener('message', (event) => {
-        //     if (event.data.type === 'NEW_VERSION_AVAILABLE') {
-        //         notifyUserAboutUpdate();
-        //     }
-        // });
-    }
+    // if ('serviceWorker' in navigator) {
+    //     navigator.serviceWorker.register(
+    //         import.meta.env.MODE === 'production' ? '/service-worker.js' : '/dev-sw.js?dev-sw'
+    //     ).then((registration) => {
+    //         console.log('Service Worker зарегистрирован.');
+    //
+    //         // if (registration.waiting) {
+    //         //     notifyUserAboutUpdate(); // Уведомление, если новый SW ждет активации
+    //         // }
+    //
+    //         if (registration) {
+    //             registration.addEventListener("updatefound", () => {
+    //                 console.log("Service Worker update found!");
+    //                 // notifyUserAboutUpdate();
+    //                 setShowModal(true)
+    //             });
+    //         }
+    //
+    //         // registration.onupdatefound = () => {
+    //         //     const installingWorker = registration.installing;
+    //         //     if(installingWorker) {
+    //         //         installingWorker.onstatechange = () => {
+    //         //             if (installingWorker.state === 'installed') {
+    //         //                 if (navigator.serviceWorker.controller) {
+    //         //                     notifyUserAboutUpdate(); // Сообщение об обновлении
+    //         //                 }
+    //         //             }
+    //         //         };
+    //         //     }
+    //         // };
+    //     });
+    //
+    //     // navigator.serviceWorker.addEventListener('message', (event) => {
+    //     //     if (event.data.type === 'NEW_VERSION_AVAILABLE') {
+    //     //         notifyUserAboutUpdate();
+    //     //     }
+    //     // });
+    // }
 
     // function notifyUserAboutUpdate() {
     //     console.log('notifyUserAboutUpdate');
