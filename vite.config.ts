@@ -11,6 +11,10 @@ export default defineConfig({
           // filename: "service-worker.js",
           // strategies: "injectManifest",
           // injectRegister: false,
+          registerType: 'autoUpdate',
+          workbox: {
+              globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+          },
           manifest: {icons: [{
               src: './src/assets/free.png',
                   sizes: '512x512',
