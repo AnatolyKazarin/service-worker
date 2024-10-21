@@ -16,26 +16,28 @@ export default defineConfig({
           ]
       }),
       VitePWA(  {
-          // srcDir: "src",
-          // filename: "service-worker.js",
-          // strategies: "injectManifest",
-          // injectRegister: false,
-          registerType: 'prompt',
           workbox: {
-              globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+              cleanupOutdatedCaches: true, // Очистка старых кешей
           },
-          manifest: {icons: [{
-              src: '/public/free.png',
-                  sizes: '512x512',
-                  type: 'image/png',
-                  purpose: 'any maskable'
-              }]},
           // devOptions: {
-          //     enabled: true
-          // }
-          // injectManifest: {
-          //     injectionPoint: undefined,
-          // }
+          //     enabled: true, // Включить в dev-режиме для тестирования
+          //     type: 'module'
+          // },
+          manifest: {
+              name: 'React Vite PWA',
+              short_name: 'ReactApp',
+              start_url: '/',
+              display: 'standalone',
+              background_color: '#ffffff',
+              theme_color: '#317EFB',
+              icons: [
+                  {
+                      src: '/public/free.png',
+                      sizes: '512x512',
+                      type: 'image/png',
+                  },
+              ],
+          },
       })
   ],
 })

@@ -1,76 +1,16 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-// import ModalContent from "./Modal";
-// import {createPortal} from "react-dom";
+import ReloadPrompt from "./ReloadPrompt";
 
 function App() {
-    // const [showModal, setShowModal] = useState(false)
-    // if ('serviceWorker' in navigator) {
-    //     navigator.serviceWorker.register(
-    //         import.meta.env.MODE === 'production' ? '/service-worker.js' : '/dev-sw.js?dev-sw'
-    //     ).then((registration) => {
-    //         console.log('Service Worker зарегистрирован.');
-    //
-    //         // if (registration.waiting) {
-    //         //     notifyUserAboutUpdate(); // Уведомление, если новый SW ждет активации
-    //         // }
-    //
-    //         if (registration) {
-    //             registration.addEventListener("updatefound", () => {
-    //                 console.log("Service Worker update found!");
-    //                 // notifyUserAboutUpdate();
-    //                 setShowModal(true)
-    //             });
-    //         }
-    //
-    //         // registration.onupdatefound = () => {
-    //         //     const installingWorker = registration.installing;
-    //         //     if(installingWorker) {
-    //         //         installingWorker.onstatechange = () => {
-    //         //             if (installingWorker.state === 'installed') {
-    //         //                 if (navigator.serviceWorker.controller) {
-    //         //                     notifyUserAboutUpdate(); // Сообщение об обновлении
-    //         //                 }
-    //         //             }
-    //         //         };
-    //         //     }
-    //         // };
-    //     });
-    //
-    //     // navigator.serviceWorker.addEventListener('message', (event) => {
-    //     //     if (event.data.type === 'NEW_VERSION_AVAILABLE') {
-    //     //         notifyUserAboutUpdate();
-    //     //     }
-    //     // });
-    // }
-
-    // function notifyUserAboutUpdate() {
-    //     console.log('notifyUserAboutUpdate');
-    //     createPortal(
-    //         <ModalContent />,
-    //         document.body
-    //     )
-    // }
 
   const [count, setCount] = useState(0)
 
-    useEffect(() => {
-        navigator.serviceWorker
-            .getRegistrations()
-            .then((regs) => {
-                console.log('REgs', regs);
-                regs.forEach((reg) => reg.update())
-            });
-    }, [count]);
-    // console.log('Show modal', showModal)
   return (
     <>
-        {/*{showModal && createPortal(*/}
-        {/*    <ModalContent />,*/}
-        {/*    document.body*/}
-        {/*)}*/}
+        <ReloadPrompt />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
