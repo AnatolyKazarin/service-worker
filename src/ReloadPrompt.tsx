@@ -20,11 +20,11 @@ function ReloadPrompt() {
       console.log(`Service Worker at: ${swUrl}`, reloadSW)
       // @ts-expect-error just ignore
       if (reloadSW === 'true') {
-        // r && setInterval(() => {
-        //   console.log('Checking for sw update')
-        //   r.update()
-        // }, 10000 /* 20s for testing purposes */)
-        r && r.update()
+        r && setInterval(() => {
+          console.log('Checking for sw update')
+          r.update()
+        }, 60000 /* 20s for testing purposes */)
+        // r && r.update()
       }
       else {
         // eslint-disable-next-line prefer-template
