@@ -60,7 +60,7 @@ function App() {
         navigator.serviceWorker
             .getRegistrations()
             .then((regs) => {
-                console.log('REgs', regs.length);
+                console.log('REgs', regs);
                 regs.forEach((reg) => reg.update())
             });
     }, [count]);
