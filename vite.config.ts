@@ -19,10 +19,6 @@ export default defineConfig({
           workbox: {
               cleanupOutdatedCaches: true, // Очистка старых кешей
           },
-          // devOptions: {
-          //     enabled: true, // Включить в dev-режиме для тестирования
-          //     type: 'module'
-          // },
           manifest: {
               name: 'React Vite PWA',
               short_name: 'ReactApp',
