@@ -43,7 +43,7 @@ function ReloadPrompt() {
 
   return (
     <div className="ReloadPrompt-container">
-      { (offlineReady || needRefresh)
+      { (needRefresh)
       && (
         <div className="ReloadPrompt-toast">
           <div className="ReloadPrompt-message" style={{color: "black"}}>
