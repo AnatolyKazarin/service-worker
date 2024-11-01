@@ -35,7 +35,7 @@ function ReloadPrompt() {
       //   }, 60000 /* 20s for testing purposes */)
       // }
       r && setInterval(() => {
-        console.log('Checking for sw update')
+        console.log('Checking for sw update1')
         r.update()
       }, 20000 /* 20s for testing purposes */)
     },
