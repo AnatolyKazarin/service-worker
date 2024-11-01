@@ -9,7 +9,7 @@ function ReloadPrompt() {
   // replaced dynamically
   const buildDate = '__DATE__'
   // replaced dyanmicaly
-  const reloadSW = '__RELOAD_SW__'
+  // const reloadSW = '__RELOAD_SW__'
 
   const {
     offlineReady: [offlineReady, setOfflineReady],
@@ -19,22 +19,26 @@ function ReloadPrompt() {
     onRegisteredSW(swUrl, r) {
       console.log(`Service Worker at: ${swUrl}`, reloadSW)
       // @ts-expect-error just ignore
-      if (reloadSW === 'true') {
-        console.log('registration', r)
-        r && setInterval(() => {
-          console.log('Checking for sw update')
-          r.update()
-        }, 60000 /* 20s for testing purposes */)
-        // r && r.update()
-      }
-      else {
-        // eslint-disable-next-line prefer-template
-        console.log('SW Registered: ', r)
-        r && setInterval(() => {
-          console.log('Checking for sw update')
-          r.update()
-        }, 60000 /* 20s for testing purposes */)
-      }
+      // if (reloadSW === 'true') {
+      //   console.log('registration', r)
+      //   r && setInterval(() => {
+      //     console.log('Checking for sw update')
+      //     r.update()
+      //   }, 60000 /* 20s for testing purposes */)
+      //   // r && r.update()
+      // }
+      // else {
+      //   // eslint-disable-next-line prefer-template
+      //   console.log('SW Registered: ', r)
+      //   r && setInterval(() => {
+      //     console.log('Checking for sw update')
+      //     r.update()
+      //   }, 60000 /* 20s for testing purposes */)
+      // }
+      r && setInterval(() => {
+        console.log('Checking for sw update')
+        r.update()
+      }, 20000 /* 20s for testing purposes */)
     },
     onRegisterError(error) {
       console.log('SW registration error', error)
