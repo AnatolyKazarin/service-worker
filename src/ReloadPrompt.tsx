@@ -20,6 +20,7 @@ function ReloadPrompt() {
       console.log(`Service Worker at: ${swUrl}`, reloadSW)
       // @ts-expect-error just ignore
       if (reloadSW === 'true') {
+        console.log('registration', r)
         r && setInterval(() => {
           console.log('Checking for sw update')
           r.update()
