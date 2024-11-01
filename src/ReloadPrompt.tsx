@@ -30,6 +30,10 @@ function ReloadPrompt() {
       else {
         // eslint-disable-next-line prefer-template
         console.log('SW Registered: ', r)
+        r && setInterval(() => {
+          console.log('Checking for sw update')
+          r.update()
+        }, 60000 /* 20s for testing purposes */)
       }
     },
     onRegisterError(error) {
